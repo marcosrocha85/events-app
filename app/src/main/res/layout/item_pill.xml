@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/pill"
+    android:padding="@dimen/margin_padding_size_small">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/pill_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/material_dynamic_secondary100"
+        tools:text="a huge skill here" />
+</FrameLayout>

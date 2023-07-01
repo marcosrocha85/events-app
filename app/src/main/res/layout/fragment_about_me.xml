@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".application.presentation.welcome.pages.aboutMe.AboutMeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/profile_image"
+            android:layout_width="@dimen/image_xxxlarge"
+            android:layout_height="@dimen/image_xxxlarge"
+            android:contentDescription="@string/profile_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/github_username_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/margin_padding_size_medium"
+            android:layout_marginEnd="@dimen/margin_padding_size_medium"
+            android:layout_marginTop="@dimen/margin_padding_size_small"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/image_micro"
+                android:layout_height="@dimen/image_micro" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/github_username_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_padding_size_small"
+                android:textStyle="bold"
+                tools:text="\@" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/github_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="marcosrocha85" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linkedin_username_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/margin_padding_size_medium"
+            android:layout_marginEnd="@dimen/margin_padding_size_medium"
+            android:layout_marginTop="@dimen/margin_padding_size_small"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/github_username_layout">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/image_micro"
+                android:layout_height="@dimen/image_micro" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/linkedin_username_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_padding_size_small"
+                android:textStyle="bold"
+                tools:text="\@" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/linkedin_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="marcosrocha85" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_size_medium"
+            android:layout_marginEnd="@dimen/margin_padding_size_medium"
+            android:layout_marginTop="@dimen/margin_padding_size_small"
+            app:layout_constraintTop_toBottomOf="@id/linkedin_username_layout"
+            app:flexWrap="wrap">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/skills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.flexbox.FlexboxLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
