@@ -8,4 +8,18 @@
         <item name="android:background">@color/black_overlay</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
+
+    <style name="Events.Theme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="Events.Theme.SplashScreen" parent="Events.Theme.NoActionBar">
+        <item name="android:windowBackground">@color/purple_500</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>

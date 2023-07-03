@@ -7,10 +7,10 @@ import com.marcosrocha85.events.data.service.cloud.model.EventData
 import io.reactivex.rxjava3.core.Observable
 
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+//import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
+//import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -37,7 +37,7 @@ interface EventService {
 
             val retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
+                //.addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .client(getClient())
                 .build()
@@ -65,10 +65,10 @@ interface EventService {
                 .readTimeout(60, TimeUnit.SECONDS)
 
             if (BuildConfig.DEBUG) {
-                val loggingInterceptor = HttpLoggingInterceptor()
-                loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+                //val loggingInterceptor = HttpLoggingInterceptor()
+                //loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
-                builder.addInterceptor(loggingInterceptor)
+                //builder.addInterceptor(loggingInterceptor)
             }
 
             return builder.build()

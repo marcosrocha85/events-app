@@ -41,9 +41,7 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), BaseView<
 
     protected open val loadingView: LinearLayout by lazy {
         val layout = LinearLayout(this)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            layout.elevation = 999f
-        }
+        layout.elevation = 999f
         layout.id = R.id.loading_view
         layout.orientation = LinearLayout.VERTICAL
         layout.gravity = Gravity.CENTER

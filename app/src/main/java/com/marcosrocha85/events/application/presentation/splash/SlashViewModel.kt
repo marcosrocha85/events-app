@@ -1,5 +1,6 @@
 package com.marcosrocha85.events.application.presentation.splash
 
+import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import androidx.lifecycle.MutableLiveData
@@ -15,9 +16,8 @@ interface SplashViewModel : BaseViewModel {
     fun nextScreen()
     fun startSplash()
 
-    class Factory : BaseViewModel.Factory(), SplashViewModel {
+    class Factory(context: Context) : BaseViewModel.Factory(context), SplashViewModel {
         override val countEnded = MutableLiveData<Boolean>()
-        private val context = EventsApplication.appContext
 
         init {
             countEnded.value = false
