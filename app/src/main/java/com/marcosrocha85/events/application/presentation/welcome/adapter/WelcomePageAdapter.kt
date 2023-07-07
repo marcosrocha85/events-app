@@ -9,24 +9,26 @@ import com.marcosrocha85.events.application.presentation.welcome.pages.aboutMe.A
 import com.marcosrocha85.events.domain.model.Skill
 
 class WelcomePageAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+    private var aboutMePage: AboutMeFragment? = null
     private var skillList: MutableList<Skill> = mutableListOf()
-    private val aboutMePage = AboutMeFragment(skillList)
 
     override fun getItemCount() = 3
 
     override fun createFragment(position: Int): Fragment {
-        return when (position) {
-            0 -> aboutMePage
+        val fragment = when (position) {
+            0 -> AboutMeFragment(skillList)
             1 -> WhatIsForFragment()
             else -> LocationInfoFragment()
         }
+        if (fragment is AboutMeFragment) {
+            aboutMePage = fragment
+        }
+        return fragment
     }
 
     fun updateSkills(skills: List<Skill>) {
         skillList.clear()
         skillList.addAll(skills)
-        if (aboutMePage.isVisible) {
-            aboutMePage.adapter.notifyItemRangeChanged(0, skills.count())
-        }
+        aboutMePage?.adapter?.notifyItemRangeChanged(0, skills.count())
     }
 }

@@ -1,29 +1,45 @@
 package com.marcosrocha85.events.application.presentation.home
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.marcosrocha85.events.R
+import com.marcosrocha85.events.application.base.BaseActivity
 import com.marcosrocha85.events.application.presentation.home.adapter.EventListAdapter
 import com.marcosrocha85.events.databinding.ActivityMainBinding
 import com.marcosrocha85.events.domain.model.Event
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<MainViewModel>() {
     private val eventList: MutableList<Event> = mutableListOf()
-    private var binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+    private lateinit var binding: ActivityMainBinding
+    override val viewModel = MainViewModel.Factory(this)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(binding.toolbar)
-
+    override fun initialize() {
         setupRecyclerView()
+        setupViewBinding()
+        viewModel.loadEvents()
+    }
+
+    override fun getInflatedLayout(): View {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     private fun setupRecyclerView() {
         val recyclerView = binding.eventList
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = EventListAdapter(eventList)
+    }
+
+    private fun setupViewBinding() {
+        viewModel.viewStatus.observe(this) {
+            it.error?.let { err ->
+                Toast.makeText(this, err.localizedMessage, Toast.LENGTH_LONG).show()
+            }
+        }
+        viewModel.events.observe(this) {
+            eventList.clear()
+            eventList.addAll(it)
+            binding.eventList.adapter?.notifyItemRangeChanged(0, eventList.count())
+        }
     }
 }
