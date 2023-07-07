@@ -1,5 +1,6 @@
 package com.marcosrocha85.events.application.presentation.welcome
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.marcosrocha85.events.application.EventsApplication
 import com.marcosrocha85.events.application.base.BaseViewModel
@@ -12,12 +13,12 @@ interface WelcomeViewModel : BaseViewModel {
     fun loadSkills()
     fun goNextActivity()
 
-    class Factory : BaseViewModel.Factory(), WelcomeViewModel {
+    class Factory(context: Context) : BaseViewModel.Factory(context), WelcomeViewModel {
         private val getSkillUseCase = GetSkillsUseCase()
         val skills = MutableLiveData<List<Skill>>()
 
         override fun goNextActivity() {
-            EventsApplication.appContext.toMain()
+            context.toMain()
         }
 
         override fun loadSkills() {

@@ -10,7 +10,7 @@ class GetEventsUseCase : BaseUseCase<Observable<List<Event>>> {
     override fun execute(): Observable<List<Event>> {
         return try {
             repository.getEvents()
-        } catch (e: Exception) {
+        } catch (e: Throwable) {
             Observable.error(e)
         }
     }

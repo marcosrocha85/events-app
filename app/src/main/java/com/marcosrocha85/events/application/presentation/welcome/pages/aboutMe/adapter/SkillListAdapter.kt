@@ -1,16 +1,11 @@
 package com.marcosrocha85.events.application.presentation.welcome.pages.aboutMe.adapter
 
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.marcosrocha85.events.R
-import com.marcosrocha85.events.application.EventsApplication
-import com.marcosrocha85.events.application.presentation.home.adapter.EventListAdapter
-import com.marcosrocha85.events.application.utils.calculateDistance
 import com.marcosrocha85.events.domain.model.Skill
 
 class SkillListAdapter(private val skillList: List<Skill>) :

@@ -18,20 +18,20 @@
             tools:node="remove" />
         <activity
             android:name=".application.presentation.welcome.WelcomeActivity"
-            android:exported="true">
+            android:exported="false">
         </activity>
         <activity
             android:name=".application.presentation.home.MainActivity"
             android:exported="true">
-        </activity>
-        <activity
-            android:name=".application.presentation.splash.SplashScreenActivity"
-            android:exported="true"
-            android:label="@string/title_activity_splash_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".application.presentation.splash.SplashScreenActivity"
+            android:exported="false"
+            android:label="@string/title_activity_splash_screen">
         </activity>
     </application>
 

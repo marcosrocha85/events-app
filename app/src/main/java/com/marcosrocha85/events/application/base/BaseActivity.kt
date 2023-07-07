@@ -23,12 +23,11 @@ import com.marcosrocha85.events.application.utils.ViewStatus
 abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), BaseView<VM> {
     protected open val constraintRoot = R.id.constraint_root
     abstract override val viewModel: VM?
-    abstract val containerView: Int
     abstract fun initialize()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(containerView)
+        setContentView(getInflatedLayout())
         viewModel?.viewStatus?.observe(this, Observer<ViewStatus> {
             if (it.isLoading) {
                 showLoading()
@@ -74,6 +73,8 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity(), BaseView<
 
         return@lazy layout
     }
+
+    protected abstract fun getInflatedLayout(): View
 
     open fun showLoading() {
         val rootView: View? = findViewById(constraintRoot)
